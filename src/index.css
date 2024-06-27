@@ -102,10 +102,10 @@
     @apply bg-secondary-200 text-secondary-600;
   }
   .badge--success {
-    @apply bg-primary-900 text-white w-14 text-center;
+    @apply bg-primary-900 text-white  text-center;
   }
   .badge--danger {
-    @apply bg-error text-white w-14 text-center;
+    @apply bg-error text-white  text-center;
   }
 }
 
@@ -165,18 +165,16 @@ table {
 
 table .title-row {
   background-color: rgb(var(--color-secondary-200));
-  
 }
 
 table .body-row {
   background-color: rgb(var(--color-secondary-0));
   border: 1px solid rgb(var(--color-secondary-200));
- 
 }
 
 table td,
 table th {
-  text-align: right;
+  text-align: center;
   white-space: nowrap;
 }
 
