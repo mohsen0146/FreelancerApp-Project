@@ -1,6 +1,6 @@
 import Table from "../../ui/Table";
 import truncateText from "../../utils/truncateText";
-import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
+import { toPersianNumbers, toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
 import { useState } from "react";
 import Modal from "../../ui/Modal";
 import ChangeProposalStatus from "./ChangeProposalStatus";
@@ -30,7 +30,7 @@ function ProposalRow({ proposal, index }) {
       <td>
         <p>{truncateText(proposal.description, 50)}</p>
       </td>
-      <td>{proposal.duration} روز</td>
+      <td>{toPersianNumbers(proposal.duration)} روز</td>
       <td>{toPersianNumbersWithComma(proposal.price)}</td>
       <td>
         <span className={`badge ${statusStyle[status].className}`}>

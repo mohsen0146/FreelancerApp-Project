@@ -1,9 +1,8 @@
-import { useForm } from "react-hook-form";
-import RHFSelect from "../../ui/RHFSelect";
-import useChangeProposalStatus from "./useChangeProposalStatus";
 import { useQueryClient } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-import Loading from "../../ui/Loading";
+import Loading from "../../../ui/Loading";
+import RHFSelect from "../../../ui/RHFSelect";
+import useChangeUserStatus from "./useChangeUserStatus";
+import { useForm } from "react-hook-form";
 
 const options = [
   {
@@ -20,19 +19,18 @@ const options = [
   },
 ];
 
-function ChangeProposalStatus({ proposalId, onClose }) {
-  const { id: projectId } = useParams();
+function ChangeUserStatus({ userId, onClose }) {
   const { register, handleSubmit } = useForm();
-  const { isUpdating, changeProposalStatus } = useChangeProposalStatus();
+  const { isUpdating, changeUserStatus } = useChangeUserStatus();
   const queryClient = useQueryClient();
 
   const onSubmit = (data) => {
-    changeProposalStatus(
-      { projectId ,proposalId, ...data },
+    changeUserStatus(
+      { userId, data },
       {
         onSuccess: () => {
           onClose();
-          queryClient.invalidateQueries({ queryKey: ["project", projectId] });
+          queryClient.invalidateQueries({ queryKey: ["users"] });
         },
       }
     );
@@ -43,7 +41,7 @@ function ChangeProposalStatus({ proposalId, onClose }) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <RHFSelect
           name="status"
-          label="تغییر وضعیت درخواست"
+          label="تغییر وضعیت کاربر"
           register={register}
           required
           options={options}
@@ -62,4 +60,4 @@ function ChangeProposalStatus({ proposalId, onClose }) {
   );
 }
 
-export default ChangeProposalStatus;
+export default ChangeUserStatus;
