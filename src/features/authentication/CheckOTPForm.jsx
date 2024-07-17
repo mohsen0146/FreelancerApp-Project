@@ -49,11 +49,11 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, otpResponse }) {
       <button onClick={onBack}>
         <HiArrowRight className="h-6 w-6 text-secondary-500" />
       </button>
-      <p className="font-bold text-secondary-800 text-lg mt-8 ">
+      <p className="font-bold text-secondary-800 text-lg my-8 ">
         کد تایید را وارد کنید
       </p>
       {otpResponse && (
-        <p className="flex items-center gap-x-2 my-8 text-sm">
+        <p className="flex items-center gap-x-2 mb-8 text-sm text-secondary-800">
           <span> {otpResponse?.message}</span>
           <button onClick={onBack}>
             <FaRegEdit className="w-4 h-4 text-primary-900" />
